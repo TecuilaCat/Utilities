@@ -1,4 +1,4 @@
-# Utilities
+# Utilities :shipit:
 
 
 ![Version Badge](https://img.shields.io/badge/version-1.0.1-blue)
@@ -19,6 +19,5 @@ Add the following dependendy to the `pom.xml` file
 </dependency>
 ```
 
-:shipit:
-
-&copy; @github/tecuilacat 2023
+---
+&copy; tecuilacat 2023

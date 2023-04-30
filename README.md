@@ -19,4 +19,6 @@ Add the following dependendy to the `pom.xml` file
 </dependency>
 ```
 
+:shipit:
+
 &copy; @github/tecuilacat 2023

@@ -19,4 +19,4 @@ Add the following dependendy to the `pom.xml` file
 </dependency>
 ```
 
-&copy; Tecuila Cat 2023
+&copy; @github/tecuilacat 2023

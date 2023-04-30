@@ -2,13 +2,15 @@ package com.github.tecuilacat.utilities.utils;
 
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
+import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 /**
  * Utilities surrounding the Integer class
  */
-@UtilityClass(forClass = Integer.class)
+@UtilityClass(forNativeClass = Integer.class)
 public final class IntegerUtilities {
 
     /**
@@ -24,7 +26,7 @@ public final class IntegerUtilities {
      * @param newDefaultValueOnError New value that gets returned on error
      */
     @UtilitiesConfig(affects = DefaultValues.class, description = "Sets new global return value on error")
-    public static void configureDefaultValueOnError(Integer newDefaultValueOnError) {
+    public static void configureDefaultValueOnError(final Integer newDefaultValueOnError) {
         DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR = newDefaultValueOnError;
     }
 
@@ -33,7 +35,7 @@ public final class IntegerUtilities {
      * @param integers Collection of integers e.g.: Arraylist
      * @return Max value. If collection is empty it returns a default value
      */
-    public static Integer getMax(Collection<Integer> integers) {
+    public static Integer getMaxValue(final Collection<Integer> integers) {
         assert integers != null: "Collection must not be null";
         return integers.stream()
                 .mapToInt(i -> i)
@@ -46,12 +48,37 @@ public final class IntegerUtilities {
      * @param integers Collection of integers e.g.: Arraylist
      * @return Min value. If collection is empty it returns a default value
      */
-    public static Integer getMin(Collection<Integer> integers) {
+    public static Integer getMinValue(final Collection<Integer> integers) {
         assert integers != null: "Collection must not be null";
         return integers.stream()
                 .mapToInt(i -> i)
                 .min()
                 .orElse(DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR);
+    }
+
+    /**
+     * Sorts a collection (does not matter which type - you have to cast it back later) either descending or ascending
+     * @param collection Collection that has to be sorted
+     * @param sortMode Sortmode
+     * @return Sorted collection (must be cast back to the original type)
+     */
+    public static Collection<Integer> getSortedCollection(final Collection<Integer> collection, final UtilitiesSortMode sortMode) {
+        final Comparator<Integer> comparator = (o1, o2) -> switch (sortMode) {
+            case DESCENDING -> o2.compareTo(o1);
+            case ASCENDING -> o1.compareTo(o2);
+        };
+        return collection.stream()
+                .sorted(comparator)
+                .toList();
+    }
+
+    /**
+     * Sorts a collection (does not matter which type - you have to cast it back later) ascending
+     * @param collection Collection that has to be sorted
+     * @return Sorted collection (must be cast back to the original type)
+     */
+    public static Collection<Integer> getSortedCollection(final Collection<Integer> collection) {
+        return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
     }
 
 }

@@ -5,7 +5,7 @@ import com.github.tecuilacat.utilities.annotations.UtilityClass;
 /**
  * Utilities surrounding the String class
  */
-@UtilityClass(forClass = String.class)
+@UtilityClass(forNativeClass = String.class)
 public final class StringUtilities {
 
     /**

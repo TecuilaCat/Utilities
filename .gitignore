@@ -37,4 +37,8 @@ build/
 ### Mac OS ###
 .DS_Store
 
+
+### CUSTOM ###
 .idea/*
+
+src/main/java/com/github/tecuilacat/utilities/test/*

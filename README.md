@@ -20,4 +20,11 @@ Add the following dependendy to the `pom.xml` file
 ```
 
 ---
+## Usable classes
+- [X] StringUtilities
+- [X] IntegerUtilities
+- [X] DoubleUtilities
+- [X] LocalDateUtilities
+
+---
 &copy; tecuilacat 2023

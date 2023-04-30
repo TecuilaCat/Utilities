@@ -5,8 +5,8 @@ import com.github.tecuilacat.utilities.annotations.UtilityClass;
 /**
  * Utilities surrounding the String class
  */
-@UtilityClass
-public class StringUtilities {
+@UtilityClass(forClass = String.class)
+public final class StringUtilities {
 
     /**
      * Checks if a string contains a certain other string while ignoring upper or lower case

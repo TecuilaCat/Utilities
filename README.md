@@ -1,7 +1,7 @@
 # Utilities
 
 
-![Version Badge](https://img.shields.io/badge/version-1.0.1-blue)
+![Version Badge](https://img.shields.io/badge/version-alpha-blue)
 ![MIN_SDK Badge](https://img.shields.io/badge/MIN_SDK-Java_17-red)
 ![license Badge](https://img.shields.io/badge/License-MIT-gree)
 ![Maven_Central Badge](https://img.shields.io/badge/maven_central-pending-brown)
@@ -18,7 +18,7 @@ This API contains multiple different Utility-Classes with use-cases that might c
 
 --- 
 ## Maven-Dependency
-Add the following dependendy to the `pom.xml` file
+Add the following dependency to the `pom.xml` file
 ```xml
 <dependency>
     <groupId>com.github.tecuilacat</groupId>
@@ -33,6 +33,8 @@ Add the following dependendy to the `pom.xml` file
 - [X] IntegerUtilities
 - [X] DoubleUtilities
 - [X] LocalDateUtilities
+- [X] LongUtilities
+- [ ] FileUtilities
 
 
 ---

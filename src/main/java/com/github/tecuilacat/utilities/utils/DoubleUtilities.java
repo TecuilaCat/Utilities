@@ -1,5 +1,6 @@
 package com.github.tecuilacat.utilities.utils;
 
+import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
@@ -10,6 +11,7 @@ import java.util.Comparator;
 /**
  * Utility class surrounding Double class
  */
+@Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Double.class)
 public final class DoubleUtilities {
 
@@ -17,6 +19,7 @@ public final class DoubleUtilities {
      * Returns the default value of this class that gets returned if something goes sideways
      * @return Default value on error
      */
+    @Since(version = "1.0.1")
     public static Double getDefaultValueOnError() {
         return DefaultValues.DEFAULT_DOUBLE_VALUE_ON_ERROR;
     }
@@ -25,6 +28,7 @@ public final class DoubleUtilities {
      * Sets a new default value for this class. Note that this operation is irreversible during runtime
      * @param newDefaultValueOnError New value that gets returned on error
      */
+    @Since(version = "1.0.1")
     @UtilitiesConfig(affects = DefaultValues.class, description = "Sets new global return value on error")
     public static void configureDefaultValueOnError(Double newDefaultValueOnError) {
         DefaultValues.DEFAULT_DOUBLE_VALUE_ON_ERROR = newDefaultValueOnError;
@@ -34,7 +38,9 @@ public final class DoubleUtilities {
      * Determines the greatest value of a collection of doubles
      * @param doubles Collection of doubles e.g.: Arraylist
      * @return Max value. If collection is empty it returns a default value
+     * @see DefaultValues
      */
+    @Since(version = "1.0.1")
     public static Double getMaxValue(final Collection<Double> doubles) {
         assert doubles != null: "Collection must not be null";
         return doubles.stream()
@@ -47,7 +53,9 @@ public final class DoubleUtilities {
      * Determines the smallest value of a collection of doubles
      * @param doubles Collection of doubles e.g.: Arraylist
      * @return Min value. If collection is empty it returns a default value
+     * @see DefaultValues
      */
+    @Since(version = "1.0.1")
     public static Double getMinValue(final Collection<Double> doubles) {
         assert doubles != null: "Collection must not be null";
         return doubles.stream()
@@ -62,6 +70,7 @@ public final class DoubleUtilities {
      * @param sortMode Sort mode
      * @return Sorted collection (must be cast back to the original type)
      */
+    @Since(version = "1.0.1")
     public static Collection<Double> getSortedCollection(final Collection<Double> collection, final UtilitiesSortMode sortMode) {
         final Comparator<Double> comparator = (o1, o2) -> switch (sortMode) {
             case DESCENDING -> o2.compareTo(o1);
@@ -77,6 +86,7 @@ public final class DoubleUtilities {
      * @param collection Collection that has to be sorted
      * @return Sorted collection (must be cast back to the original type)
      */
+    @Since(version = "1.0.1")
     public static Collection<Double> getSortedCollection(final Collection<Double> collection) {
         return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
     }

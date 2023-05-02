@@ -9,19 +9,19 @@ import java.util.Collection;
 import java.util.Comparator;
 
 /**
- * Utilities surrounding the Integer class
+ * Utilities surrounding the Long class
  */
 @Since(version = "1.0.1")
-@UtilityClass(forNativeClass = Integer.class)
-public final class IntegerUtilities {
+@UtilityClass(forNativeClass = Long.class)
+public class LongUtilities {
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
      * @return Default value on error
      */
     @Since(version = "1.0.1")
-    public static Integer getDefaultValueOnError() {
-        return DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR;
+    public static Long getDefaultValueOnError() {
+        return DefaultValues.DEFAULT_LONG_VALUE_ON_ERROR;
     }
 
     /**
@@ -30,36 +30,36 @@ public final class IntegerUtilities {
      */
     @Since(version = "1.0.1")
     @UtilitiesConfig(affects = DefaultValues.class, description = "Sets new global return value on error")
-    public static void configureDefaultValueOnError(final Integer newDefaultValueOnError) {
-        DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR = newDefaultValueOnError;
+    public static void configureDefaultValueOnError(final Long newDefaultValueOnError) {
+        DefaultValues.DEFAULT_LONG_VALUE_ON_ERROR = newDefaultValueOnError;
     }
 
     /**
-     * Determines the greatest value of a collection of integers
-     * @param integers Collection of integers e.g.: Arraylist
+     * Determines the greatest value of a collection of longs
+     * @param longs Collection of longs e.g.: Arraylist
      * @return Max value. If collection is empty it returns a default value
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Integer getMaxValue(final Collection<Integer> integers) {
-        assert integers != null: "Collection must not be null";
-        return integers.stream()
-                .mapToInt(i -> i)
+    public static Long getMaxValue(final Collection<Long> longs) {
+        assert longs != null: "Collection must not be null";
+        return longs.stream()
+                .mapToLong(l -> l)
                 .max()
-                .orElse(DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR);
+                .orElse(DefaultValues.DEFAULT_LONG_VALUE_ON_ERROR);
     }
 
     /**
-     * Determines the smallest value of a collection of integers
-     * @param integers Collection of integers e.g.: Arraylist
+     * Determines the smallest value of a collection of longs
+     * @param longs Collection of longs e.g.: Arraylist
      * @return Min value. If collection is empty it returns a default value
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Integer getMinValue(final Collection<Integer> integers) {
-        assert integers != null: "Collection must not be null";
-        return integers.stream()
-                .mapToInt(i -> i)
+    public static Long getMinValue(final Collection<Long> longs) {
+        assert longs != null: "Collection must not be null";
+        return longs.stream()
+                .mapToLong(l -> l)
                 .min()
                 .orElse(DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR);
     }
@@ -71,8 +71,8 @@ public final class IntegerUtilities {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Integer> getSortedCollection(final Collection<Integer> collection, final UtilitiesSortMode sortMode) {
-        final Comparator<Integer> comparator = (o1, o2) -> switch (sortMode) {
+    public static Collection<Long> getSortedCollection(final Collection<Long> collection, final UtilitiesSortMode sortMode) {
+        final Comparator<Long> comparator = (o1, o2) -> switch (sortMode) {
             case DESCENDING -> o2.compareTo(o1);
             case ASCENDING -> o1.compareTo(o2);
         };
@@ -87,7 +87,7 @@ public final class IntegerUtilities {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Integer> getSortedCollection(final Collection<Integer> collection) {
+    public static Collection<Long> getSortedCollection(final Collection<Long> collection) {
         return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
     }
 

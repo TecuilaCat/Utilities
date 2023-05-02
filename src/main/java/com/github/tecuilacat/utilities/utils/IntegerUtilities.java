@@ -59,7 +59,7 @@ public final class IntegerUtilities {
     /**
      * Sorts a collection (does not matter which type - you have to cast it back later) either descending or ascending
      * @param collection Collection that has to be sorted
-     * @param sortMode Sortmode
+     * @param sortMode Sort mode
      * @return Sorted collection (must be cast back to the original type)
      */
     public static Collection<Integer> getSortedCollection(final Collection<Integer> collection, final UtilitiesSortMode sortMode) {

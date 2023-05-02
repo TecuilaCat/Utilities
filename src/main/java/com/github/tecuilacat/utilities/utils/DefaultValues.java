@@ -3,7 +3,7 @@ package com.github.tecuilacat.utilities.utils;
 import com.github.tecuilacat.utilities.annotations.DefaultValue;
 import com.github.tecuilacat.utilities.annotations.PrivateClass;
 
-@PrivateClass
+@PrivateClass(usage = "Default values for utility classes")
 final class DefaultValues {
 
     @DefaultValue(description = "Value that gets returned if in an integer method occurs an error")

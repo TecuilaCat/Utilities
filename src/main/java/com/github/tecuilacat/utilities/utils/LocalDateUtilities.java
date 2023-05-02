@@ -11,27 +11,67 @@ import java.time.LocalDate;
 @UtilityClass(forNativeClass = LocalDate.class)
 public class LocalDateUtilities {
 
-    @Deprecated
-    public static Integer getDaysBetween(LocalDate date1, LocalDate date2) {
-        assert date1 != null && date2 != null: "Dates must not be null";
-        return 0;
-    }
+//    /**
+//     * Returns the number of days between two dates
+//     * @param date1 Date 1
+//     * @param date2 Date 2
+//     * @return Number of days between dates
+//     */
+//    @NotImplementedYet
+//    public static Integer getDaysBetween(LocalDate date1, LocalDate date2) {
+//        assert date1 != null && date2 != null: "Dates must not be null";
+//        return 0; //TODO
+//    }
 
-    @Deprecated
+    /**
+     * Returns the number of months between two dates
+     * @param date1 Date 1
+     * @param date2 Date 2
+     * @return Months between dates
+     */
     public static Integer getMonthsBetween(LocalDate date1, LocalDate date2) {
         assert date1 != null && date2 != null: "Dates must not be null";
-        return 0;
+        LocalDate[] sorted = getLocalDatesSorted(date1, date2);
+        date1 = sorted[0];
+        date2 = sorted[1];
+        int result = date2.getMonthValue() - date1.getMonthValue() + getYearsBetween(date1, date2) * 12;
+        if (date2.getMonthValue() < date1.getMonthValue()) {
+            result += 12;
+        }
+        if (date2.getDayOfMonth() < date1.getDayOfMonth()) {
+            result--;
+        }
+        return result;
     }
 
-    @Deprecated
+    /**
+     * Returns the number of full years between two local dates
+     * @param date1 Local date 1
+     * @param date2 Local date 2
+     * @return Full years between dates
+     */
     public static Integer getYearsBetween(LocalDate date1, LocalDate date2) {
         assert date1 != null && date2 != null: "Dates must not be null";
-        if (date1.isAfter(date2)) {
-            LocalDate tempDate = date1;
-            date1 = date2;
-            date2 = tempDate;
+        LocalDate[] sorted = getLocalDatesSorted(date1, date2);
+        date1 = sorted[0];
+        date2 = sorted[1];
+        int result = date2.getYear() - date1.getYear();
+        if (date2.getMonthValue() < date1.getMonthValue()) {
+            result--;
+        } else if (date2.getMonthValue() == date1.getMonthValue() && date2.getDayOfMonth() < date1.getDayOfMonth()) {
+            result--;
         }
-        return date2.getYear() - date1.getYear();
+        return result;
+    }
+
+    /**
+     * Sorts two dates ascending
+     * @param date1 First date
+     * @param date2 Second date
+     * @return Sorted Dates (ascending)
+     */
+    public static LocalDate[] getLocalDatesSorted(final LocalDate date1, final LocalDate date2) {
+        return getLocalDatesSorted(date1, date2, UtilitiesSortMode.ASCENDING);
     }
 
     /**

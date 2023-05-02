@@ -5,4 +5,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 public @interface PrivateClass {
+
+    String usage() default "";
+
 }

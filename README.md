@@ -3,6 +3,7 @@
 
 ![Version Badge](https://img.shields.io/badge/version-1.0.1-blue)
 ![MIN_SDK Badge](https://img.shields.io/badge/MIN_SDK-Java_17-red)
+![license Badge](https://img.shields.io/badge/License-MIT-gree)
 ![Maven_Central Badge](https://img.shields.io/badge/maven_central-pending-brown)
 ![Type Badge](https://img.shields.io/badge/Software_Typ-utilities-green)
 

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = File.class)
-public class FileUtilities {
+class FileUtilities {
 
     @DefaultValue(description = "Functionality is disabled by default")
     private static boolean relativToRootFolderIsEnabled = false;

@@ -5,6 +5,8 @@ import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Collection;
 import java.util.Comparator;
 
@@ -89,6 +91,30 @@ public final class DoubleUtilities {
     @Since(version = "1.0.1")
     public static Collection<Double> getSortedCollection(final Collection<Double> collection) {
         return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
+    }
+
+    /**
+     * Rounds a double to another double with a specified amount of numbers after the komma
+     * @param d Value to be formatted
+     * @param digitsAfterComma Amount of numbers after the comma
+     * @return Rounded double
+     */
+    @Since(version = "1.0.1")
+    public static Double round(Double d, int digitsAfterComma) {
+        String doubleAsString = Double.toString(d);
+        if (doubleAsString.split("\\.")[1].length() > digitsAfterComma) {
+            d = new BigDecimal(d)
+                    .setScale(digitsAfterComma + 1, RoundingMode.HALF_UP)
+                    .doubleValue();
+            doubleAsString = Double.toString(d);
+            if (Character.getNumericValue(doubleAsString.charAt(doubleAsString.length() - 1)) == 5) {
+                doubleAsString = doubleAsString.substring(0, doubleAsString.length() - 1)
+                        + doubleAsString.substring(doubleAsString.length() - 1).replace("5", "6");
+            }
+        }
+        return new BigDecimal(doubleAsString)
+                .setScale(digitsAfterComma, RoundingMode.HALF_UP)
+                .doubleValue();
     }
 
 }

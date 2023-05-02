@@ -8,6 +8,6 @@ public @interface Since {
 
     String version();
 
-    String lastUpdate() default "";
+    String lastUpdated() default "";
 
 }

@@ -3,6 +3,8 @@ package com.github.tecuilacat.utilities.utils;
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;

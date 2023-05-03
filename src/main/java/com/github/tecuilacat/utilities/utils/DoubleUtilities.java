@@ -7,8 +7,7 @@ import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Collection;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Utility class surrounding Double class
@@ -16,6 +15,8 @@ import java.util.Comparator;
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Double.class)
 public final class DoubleUtilities {
+
+    private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
@@ -45,6 +46,7 @@ public final class DoubleUtilities {
     @Since(version = "1.0.1")
     public static Double getMaxValue(final Collection<Double> doubles) {
         assert doubles != null: "Collection must not be null";
+
         return doubles.stream()
                 .mapToDouble(d -> d)
                 .max()
@@ -60,6 +62,7 @@ public final class DoubleUtilities {
     @Since(version = "1.0.1")
     public static Double getMinValue(final Collection<Double> doubles) {
         assert doubles != null: "Collection must not be null";
+
         return doubles.stream()
                 .mapToDouble(d -> d)
                 .min()
@@ -73,7 +76,10 @@ public final class DoubleUtilities {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
+
     public static Collection<Double> getSortedCollection(final Collection<Double> collection, final UtilitiesSortMode sortMode) {
+        assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
+
         final Comparator<Double> comparator = (o1, o2) -> switch (sortMode) {
             case DESCENDING -> o2.compareTo(o1);
             case ASCENDING -> o1.compareTo(o2);
@@ -101,17 +107,23 @@ public final class DoubleUtilities {
      */
     @Since(version = "1.0.1")
     public static Double round(Double d, int digitsAfterComma) {
+        assert d != null: "Parameter d must not be null";
+        assert digitsAfterComma >= 0: "Parameter digitsAfterComma must be at least 0. Current is " + digitsAfterComma;
+
         String doubleAsString = Double.toString(d);
-        if (doubleAsString.split("\\.")[1].length() > digitsAfterComma) {
+        if (doubleAsString.split("\\.")[1].length() > digitsAfterComma) { //Checks if amount of digits after the comma is bigger than the intended cut
+            //round, but with one digit more than wanted
             d = new BigDecimal(d)
                     .setScale(digitsAfterComma + 1, RoundingMode.HALF_UP)
                     .doubleValue();
             doubleAsString = Double.toString(d);
-            if (Character.getNumericValue(doubleAsString.charAt(doubleAsString.length() - 1)) == 5) {
+            if (Character.getNumericValue(doubleAsString.charAt(doubleAsString.length() - 1)) == 5) { //Check if last digit (LSB) is 5
+                //increase number slightly so the rounding is correct
                 doubleAsString = doubleAsString.substring(0, doubleAsString.length() - 1)
                         + doubleAsString.substring(doubleAsString.length() - 1).replace("5", "6");
             }
         }
+        //convert string back to double and round with the correct amount of digits behind the comma
         return new BigDecimal(doubleAsString)
                 .setScale(digitsAfterComma, RoundingMode.HALF_UP)
                 .doubleValue();

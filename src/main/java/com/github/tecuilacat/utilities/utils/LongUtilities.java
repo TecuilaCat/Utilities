@@ -5,8 +5,7 @@ import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
 
-import java.util.Collection;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Utilities surrounding the Long class
@@ -14,6 +13,8 @@ import java.util.Comparator;
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Long.class)
 public class LongUtilities {
+
+    private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
@@ -72,6 +73,9 @@ public class LongUtilities {
      */
     @Since(version = "1.0.1")
     public static Collection<Long> getSortedCollection(final Collection<Long> collection, final UtilitiesSortMode sortMode) {
+        assert collection != null: "Collection must not be null";
+        assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
+
         final Comparator<Long> comparator = (o1, o2) -> switch (sortMode) {
             case DESCENDING -> o2.compareTo(o1);
             case ASCENDING -> o1.compareTo(o2);

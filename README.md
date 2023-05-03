@@ -71,6 +71,17 @@ Result:
 > 2  
 > 1
 
+---
+
+## Having problems? No problem!
+For better debugging enable assertions:
+1. Open the Run-Configurations-Tab
+2. Click on Modify options
+3. Click on Add VM options
+4. Insert `-ea` into the text-field
+5. Run the program
+
+Above example is for Intellij-Users only. For other IDEs you might have to look it up yourself.
 
 ---
 &copy; Tecuilacat 2023

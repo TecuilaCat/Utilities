@@ -5,8 +5,7 @@ import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
 
-import java.util.Collection;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Utilities surrounding the Integer class
@@ -14,6 +13,8 @@ import java.util.Comparator;
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Integer.class)
 public final class IntegerUtilities {
+
+    private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
@@ -72,6 +73,8 @@ public final class IntegerUtilities {
      */
     @Since(version = "1.0.1")
     public static Collection<Integer> getSortedCollection(final Collection<Integer> collection, final UtilitiesSortMode sortMode) {
+        assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
+
         final Comparator<Integer> comparator = (o1, o2) -> switch (sortMode) {
             case DESCENDING -> o2.compareTo(o1);
             case ASCENDING -> o1.compareTo(o2);

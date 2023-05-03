@@ -13,17 +13,16 @@ import java.time.LocalDate;
 @UtilityClass(forNativeClass = LocalDate.class)
 public class LocalDateUtilities {
 
-//    /**
-//     * Returns the number of days between two dates
-//     * @param date1 Date 1
-//     * @param date2 Date 2
-//     * @return Number of days between dates
-//     */
-//    @NotImplementedYet
-//    public static Integer getDaysBetween(LocalDate date1, LocalDate date2) {
-//        assert date1 != null && date2 != null: "Dates must not be null";
-//        return 0; //TODO
-//    }
+    /**
+     * Returns the number of days between two dates
+     * @param date1 Date 1
+     * @param date2 Date 2
+     * @return Number of days between dates
+     */
+    static Integer getDaysBetween(LocalDate date1, LocalDate date2) {
+        assert date1 != null && date2 != null: "Dates must not be null";
+        return 0; //TODO
+    }
 
     /**
      * Returns the number of months between two dates

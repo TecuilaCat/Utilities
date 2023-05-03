@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /*
  * This file is part of the JUnit Jupiter test project.
  *
- * Licensed under the Eclipse Public License - v 2 (the "License");
+ * Licensed under the Eclipse Public License - v 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -23,22 +23,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class IntegerUtilitiesTest {
+class LongsTest {
 
     @Test
     void getMaxValue() {
-        assertEquals(5, IntegerUtilities.getMaxValue(Arrays.asList(1, 3, 4, 2, 5)));
+        assertEquals(5L, Longs.getMaxValue(Arrays.asList(1L, 3L, 4L, 2L, 5L)));
     }
 
     @Test
     void getMinValue() {
-        assertEquals(1, IntegerUtilities.getMinValue(Arrays.asList(1, 3, 4, 2, 5)));
+        assertEquals(1L, Longs.getMinValue(Arrays.asList(1L, 3L, 4L, 2L, 5L)));
     }
 
     @Test
     void getSortedCollection() {
-        final List<Integer> sortedDoublesAscending = (List<Integer>) IntegerUtilities.getSortedCollection(Arrays.asList(1, 3, 4, 2, 5));
-        final List<Integer> sortedDoublesDescending = (List<Integer>) IntegerUtilities.getSortedCollection(Arrays.asList(1, 3, 4, 2, 5), UtilitiesSortMode.DESCENDING);
+        final List<Long> sortedDoublesAscending = (List<Long>) Longs.getSortedCollection(Arrays.asList(1L, 3L, 4L, 2L, 5L));
+        final List<Long> sortedDoublesDescending = (List<Long>) Longs.getSortedCollection(Arrays.asList(1L, 3L, 4L, 2L, 5L), UtilitiesSortMode.DESCENDING);
 
         assertAll("Checking Ascending",
                 () -> assertTrue(sortedDoublesAscending.get(0) <= sortedDoublesAscending.get(1)),
@@ -53,6 +53,11 @@ class IntegerUtilitiesTest {
                 () -> assertTrue(sortedDoublesDescending.get(2) >= sortedDoublesDescending.get(3)),
                 () -> assertTrue(sortedDoublesDescending.get(3) >= sortedDoublesDescending.get(4))
         );
+    }
+
+    @Test
+    void sum() {
+        assertEquals(125L, Longs.sum(Arrays.asList(7L, 9L, 6L, 7L, 4L, 1L, 8L, 83L)));
     }
 
 }

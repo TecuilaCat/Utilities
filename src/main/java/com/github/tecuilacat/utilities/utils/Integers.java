@@ -12,7 +12,7 @@ import java.util.*;
  */
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Integer.class)
-public final class IntegerUtilities {
+public final class Integers {
 
     private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
 
@@ -92,6 +92,20 @@ public final class IntegerUtilities {
     @Since(version = "1.0.1")
     public static Collection<Integer> getSortedCollection(final Collection<Integer> collection) {
         return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
+    }
+
+    /**
+     * Sums up every value in the collection
+     * @param collection Collection containing numbers
+     * @return Sum of all values
+     */
+    @Since(version = "1.0.1")
+    public static Integer sum(Collection<Integer> collection) {
+        assert collection != null: "Collection must not be null";
+
+        return collection.stream()
+                .mapToInt(i -> i)
+                .sum();
     }
 
 }

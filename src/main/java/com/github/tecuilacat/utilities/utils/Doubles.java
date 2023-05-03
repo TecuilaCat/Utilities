@@ -14,7 +14,7 @@ import java.util.*;
  */
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Double.class)
-public final class DoubleUtilities {
+public final class Doubles {
 
     private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
 
@@ -127,6 +127,20 @@ public final class DoubleUtilities {
         return new BigDecimal(doubleAsString)
                 .setScale(digitsAfterComma, RoundingMode.HALF_UP)
                 .doubleValue();
+    }
+
+    /**
+     * Sums up every value in the collection
+     * @param collection Collection containing numbers
+     * @return Sum of all values
+     */
+    @Since(version = "1.0.1")
+    public static Double sum(Collection<Double> collection) {
+        assert collection != null: "Collection must not be null";
+
+        return collection.stream()
+                .mapToDouble(d -> d)
+                .sum();
     }
 
 }

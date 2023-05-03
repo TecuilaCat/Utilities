@@ -22,34 +22,35 @@ import static org.junit.jupiter.api.Assertions.*;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class LocalDateUtilitiesTest {
+class LocalDatesTest {
 
     @Test
     void getDaysBetween() {
+        //TODO
     }
 
     @Test
     void getMonthsBetween() {
         assertAll("",
-                () -> assertEquals(0, LocalDateUtilities.getMonthsBetween(LocalDate.of(2023,5,2), LocalDate.of(2023,5,2))),
-                () -> assertEquals(1, LocalDateUtilities.getMonthsBetween(LocalDate.of(2023,5,2), LocalDate.of(2023,6,2))),
-                () -> assertEquals(1, LocalDateUtilities.getMonthsBetween(LocalDate.of(2023,5,2), LocalDate.of(2023,4,2))),
-                () -> assertEquals(1, LocalDateUtilities.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2022,6,3))),
-                () -> assertEquals(13, LocalDateUtilities.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2023,6,2))),
-                () -> assertEquals(24, LocalDateUtilities.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2024,5,2))),
-                () -> assertEquals(23, LocalDateUtilities.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2024,4,2))),
-                () -> assertEquals(0, LocalDateUtilities.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2022,6,1)))
+                () -> assertEquals(0, LocalDates.getMonthsBetween(LocalDate.of(2023,5,2), LocalDate.of(2023,5,2))),
+                () -> assertEquals(1, LocalDates.getMonthsBetween(LocalDate.of(2023,5,2), LocalDate.of(2023,6,2))),
+                () -> assertEquals(1, LocalDates.getMonthsBetween(LocalDate.of(2023,5,2), LocalDate.of(2023,4,2))),
+                () -> assertEquals(1, LocalDates.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2022,6,3))),
+                () -> assertEquals(13, LocalDates.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2023,6,2))),
+                () -> assertEquals(24, LocalDates.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2024,5,2))),
+                () -> assertEquals(23, LocalDates.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2024,4,2))),
+                () -> assertEquals(0, LocalDates.getMonthsBetween(LocalDate.of(2022,5,2), LocalDate.of(2022,6,1)))
         );
     }
 
     @Test
     void getYearsBetween() {
         assertAll("LocalDateUtilities.getYearsBetween(date1: LocalDate, date2: LocalDate): int",
-                () -> assertEquals(25, LocalDateUtilities.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 6, 12))),
-                () -> assertEquals(25, LocalDateUtilities.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 6, 13))),
-                () -> assertEquals(24, LocalDateUtilities.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 6, 11))),
-                () -> assertEquals(24, LocalDateUtilities.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 5, 12))),
-                () -> assertEquals(25, LocalDateUtilities.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 7, 12)))
+                () -> assertEquals(25, LocalDates.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 6, 12))),
+                () -> assertEquals(25, LocalDates.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 6, 13))),
+                () -> assertEquals(24, LocalDates.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 6, 11))),
+                () -> assertEquals(24, LocalDates.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 5, 12))),
+                () -> assertEquals(25, LocalDates.getYearsBetween(LocalDate.of(1998, 6,12), LocalDate.of(2023, 7, 12)))
         );
     }
 
@@ -57,8 +58,8 @@ class LocalDateUtilitiesTest {
     void getLocalDatesSorted() {
         LocalDate date1 = LocalDate.of(2023, 5,2);
         LocalDate date2 = LocalDate.of(2023, 6,2);
-        LocalDate[] resultAsc = LocalDateUtilities.getLocalDatesSorted(date1, date2, UtilitiesSortMode.ASCENDING);
-        LocalDate[] resultDesc = LocalDateUtilities.getLocalDatesSorted(date1, date2, UtilitiesSortMode.DESCENDING);
+        LocalDate[] resultAsc = LocalDates.getLocalDatesSorted(date1, date2, UtilitiesSortMode.ASCENDING);
+        LocalDate[] resultDesc = LocalDates.getLocalDatesSorted(date1, date2, UtilitiesSortMode.DESCENDING);
 
         assertAll("LocalDateUtilities.getLocalDatesSorted(date1: LocalDate, date2: LocalDate): LocalDate[] -> Ascending",
                 () -> assertEquals(resultAsc[0].getYear(), date1.getYear()),

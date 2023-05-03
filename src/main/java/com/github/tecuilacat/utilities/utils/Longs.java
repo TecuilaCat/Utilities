@@ -12,7 +12,7 @@ import java.util.*;
  */
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = Long.class)
-public class LongUtilities {
+public final class Longs {
 
     private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
 
@@ -93,6 +93,20 @@ public class LongUtilities {
     @Since(version = "1.0.1")
     public static Collection<Long> getSortedCollection(final Collection<Long> collection) {
         return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
+    }
+
+    /**
+     * Sums up every value in the collection
+     * @param collection Collection containing numbers
+     * @return Sum of all values
+     */
+    @Since(version = "1.0.1")
+    public static Long sum(Collection<Long> collection) {
+        assert collection != null: "Collection must not be null";
+
+        return collection.stream()
+                .mapToLong(l -> l)
+                .sum();
     }
 
 }

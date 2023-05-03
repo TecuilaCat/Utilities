@@ -1,6 +1,6 @@
 package com.github.tecuilacat.utilities.exceptions;
 
-public class FileUtilitiesException extends Exception {
+public final class FileUtilitiesException extends Exception {
 
     public FileUtilitiesException() {
     }

@@ -29,12 +29,11 @@ Add the following dependency to the `pom.xml` file
 
 ---
 ## Usable classes
-- [X] StringUtilities
-- [X] IntegerUtilities
-- [X] DoubleUtilities
-- [X] LocalDateUtilities
-- [X] LongUtilities
-- [ ] FileUtilities
+- [X] Strings
+- [X] Integers
+- [X] Doubles
+- [X] LocalDates
+- [X] Longs
 
 
 ---
@@ -43,21 +42,21 @@ Add the following dependency to the `pom.xml` file
 
 ```java
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
-import com.github.tecuilacat.utilities.utils.IntegerUtilities;
-import com.github.tecuilacat.utilities.utils.StringUtilities;
+import com.github.tecuilacat.utilities.utils.Integers;
+import com.github.tecuilacat.utilities.utils.Strings;
 
 import java.util.Arrays;
 
 public class Example {
-    public static void main(String[] args) {
-        StringUtilities.getMatchingSubstringsIgnoreCase("This is a test!", "this|test")
-                .forEach(System.out::println);
+  public static void main(String[] args) {
+    Strings.getMatchingSubstringsIgnoreCase("This is a test!", "this|test")
+            .forEach(System.out::println);
 
-        System.out.println(" ");
+    System.out.println(" ");
 
-        IntegerUtilities.getSortedCollection(Arrays.asList(5, 3, 2, 1, 7), UtilitiesSortMode.DESCENDING)
-                .forEach(System.out::println);
-    }
+    Integers.getSortedCollection(Arrays.asList(5, 3, 2, 1, 7), UtilitiesSortMode.DESCENDING)
+            .forEach(System.out::println);
+  }
 }
 ```
 

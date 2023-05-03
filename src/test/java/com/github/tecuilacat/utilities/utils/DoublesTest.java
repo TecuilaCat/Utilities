@@ -23,22 +23,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class DoubleUtilitiesTest {
+class DoublesTest {
 
     @Test
     void getMaxValue() {
-        assertEquals(5.0, DoubleUtilities.getMaxValue(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
+        assertEquals(5.0, Doubles.getMaxValue(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
     }
 
     @Test
     void getMinValue() {
-        assertEquals(1.0, DoubleUtilities.getMinValue(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
+        assertEquals(1.0, Doubles.getMinValue(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
     }
 
     @Test
     void getSortedCollection() {
-        final List<Double> sortedDoublesAscending = (List<Double>) DoubleUtilities.getSortedCollection(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0));
-        final List<Double> sortedDoublesDescending = (List<Double>) DoubleUtilities.getSortedCollection(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0), UtilitiesSortMode.DESCENDING);
+        final List<Double> sortedDoublesAscending = (List<Double>) Doubles.getSortedCollection(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0));
+        final List<Double> sortedDoublesDescending = (List<Double>) Doubles.getSortedCollection(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0), UtilitiesSortMode.DESCENDING);
 
         assertAll("Checking Ascending",
                 () -> assertTrue(sortedDoublesAscending.get(0) <= sortedDoublesAscending.get(1)),
@@ -56,14 +56,19 @@ class DoubleUtilitiesTest {
     }
 
     @Test
-    void formatDouble() {
+    void round() {
         assertAll("formatDouble",
-                () -> assertEquals(10.112, DoubleUtilities.round(10.1117, 3)),
-                () -> assertEquals(10.12, DoubleUtilities.round(10.1199, 3)),
-                () -> assertEquals(10.11, DoubleUtilities.round(10.114, 2)),
-                () -> assertEquals(10.5, DoubleUtilities.round(10.45, 1)),
-                () -> assertEquals(19.99, DoubleUtilities.round(19.984673, 2)),
-                () -> assertEquals(10.0, DoubleUtilities.round(10.45, 0))
+                () -> assertEquals(10.112, Doubles.round(10.1117, 3)),
+                () -> assertEquals(10.12, Doubles.round(10.1199, 3)),
+                () -> assertEquals(10.11, Doubles.round(10.114, 2)),
+                () -> assertEquals(10.5, Doubles.round(10.45, 1)),
+                () -> assertEquals(19.99, Doubles.round(19.984673, 2)),
+                () -> assertEquals(10.0, Doubles.round(10.45, 0))
         );
+    }
+
+    @Test
+    void sum() {
+        assertEquals(125.0, Doubles.sum(Arrays.asList(7.0, 9.0, 6.0, 7.0, 4.0, 1.0, 8.0, 83.0)));
     }
 }

@@ -11,7 +11,7 @@ import java.time.LocalDate;
  */
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = LocalDate.class)
-public class LocalDateUtilities {
+public final class LocalDates {
 
     /**
      * Returns the number of days between two dates

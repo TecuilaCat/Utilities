@@ -3,7 +3,7 @@ package com.github.tecuilacat.utilities.utils;
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 
 import java.util.*;
 
@@ -14,7 +14,7 @@ import java.util.*;
 @UtilityClass(forNativeClass = Long.class)
 public final class Longs {
 
-    private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
+    private static final Set<SortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(SortMode.ASCENDING, SortMode.DESCENDING));
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
@@ -42,7 +42,7 @@ public final class Longs {
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Long getMaxValue(final Collection<Long> longs) {
+    public static Long max(final Collection<Long> longs) {
         assert longs != null: "Collection must not be null";
         return longs.stream()
                 .mapToLong(l -> l)
@@ -57,7 +57,7 @@ public final class Longs {
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Long getMinValue(final Collection<Long> longs) {
+    public static Long min(final Collection<Long> longs) {
         assert longs != null: "Collection must not be null";
         return longs.stream()
                 .mapToLong(l -> l)
@@ -72,7 +72,7 @@ public final class Longs {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Long> getSortedCollection(final Collection<Long> collection, final UtilitiesSortMode sortMode) {
+    public static Collection<Long> sorted(final Collection<Long> collection, final SortMode sortMode) {
         assert collection != null: "Collection must not be null";
         assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
 
@@ -91,8 +91,8 @@ public final class Longs {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Long> getSortedCollection(final Collection<Long> collection) {
-        return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
+    public static Collection<Long> sorted(final Collection<Long> collection) {
+        return sorted(collection, SortMode.ASCENDING);
     }
 
     /**
@@ -107,6 +107,16 @@ public final class Longs {
         return collection.stream()
                 .mapToLong(l -> l)
                 .sum();
+    }
+
+    static Long greater(Long a, Long b) {
+        //TODO
+        return null;
+    }
+
+    static Long smaller(Long a, Long b) {
+        //TODO
+        return null;
     }
 
 }

@@ -2,7 +2,7 @@ package com.github.tecuilacat.utilities.utils;
 
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 
 import java.time.LocalDate;
 
@@ -75,7 +75,7 @@ public final class LocalDates {
      */
     @Since(version = "1.0.1")
     public static LocalDate[] getLocalDatesSorted(final LocalDate date1, final LocalDate date2) {
-        return getLocalDatesSorted(date1, date2, UtilitiesSortMode.ASCENDING);
+        return getLocalDatesSorted(date1, date2, SortMode.ASCENDING);
     }
 
     /**
@@ -86,7 +86,7 @@ public final class LocalDates {
      * @return Sorted Dates. First one is at index 0, second one at index 1
      */
     @Since(version = "1.0.1")
-    public static LocalDate[] getLocalDatesSorted(final LocalDate date1, final LocalDate date2, final UtilitiesSortMode mode) {
+    public static LocalDate[] getLocalDatesSorted(final LocalDate date1, final LocalDate date2, final SortMode mode) {
         assert date1 != null && date2 != null: "Dates must not be null";
         assert mode != null: "Sort mode must not be null";
         LocalDate[] result = new LocalDate[2];

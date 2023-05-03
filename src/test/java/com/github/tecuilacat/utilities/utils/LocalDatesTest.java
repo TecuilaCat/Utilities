@@ -1,6 +1,6 @@
 package com.github.tecuilacat.utilities.utils;
 
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -58,8 +58,8 @@ class LocalDatesTest {
     void getLocalDatesSorted() {
         LocalDate date1 = LocalDate.of(2023, 5,2);
         LocalDate date2 = LocalDate.of(2023, 6,2);
-        LocalDate[] resultAsc = LocalDates.getLocalDatesSorted(date1, date2, UtilitiesSortMode.ASCENDING);
-        LocalDate[] resultDesc = LocalDates.getLocalDatesSorted(date1, date2, UtilitiesSortMode.DESCENDING);
+        LocalDate[] resultAsc = LocalDates.getLocalDatesSorted(date1, date2, SortMode.ASCENDING);
+        LocalDate[] resultDesc = LocalDates.getLocalDatesSorted(date1, date2, SortMode.DESCENDING);
 
         assertAll("LocalDateUtilities.getLocalDatesSorted(date1: LocalDate, date2: LocalDate): LocalDate[] -> Ascending",
                 () -> assertEquals(resultAsc[0].getYear(), date1.getYear()),

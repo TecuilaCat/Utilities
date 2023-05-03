@@ -41,6 +41,7 @@ Add the following dependency to the `pom.xml` file
 ## Example
 
 ```java
+import com.github.tecuilacat.utilities.modes.SortMode;
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
 import com.github.tecuilacat.utilities.utils.Integers;
 import com.github.tecuilacat.utilities.utils.Strings;
@@ -54,7 +55,7 @@ public class Example {
 
     System.out.println(" ");
 
-    Integers.getSortedCollection(Arrays.asList(5, 3, 2, 1, 7), UtilitiesSortMode.DESCENDING)
+    Integers.sorted(Arrays.asList(5, 3, 2, 1, 7), SortMode.DESCENDING)
             .forEach(System.out::println);
   }
 }

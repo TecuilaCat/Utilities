@@ -3,7 +3,7 @@ package com.github.tecuilacat.utilities.utils;
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,7 +16,7 @@ import java.util.*;
 @UtilityClass(forNativeClass = Double.class)
 public final class Doubles {
 
-    private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
+    private static final Set<SortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(SortMode.ASCENDING, SortMode.DESCENDING));
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
@@ -44,7 +44,7 @@ public final class Doubles {
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Double getMaxValue(final Collection<Double> doubles) {
+    public static Double max(final Collection<Double> doubles) {
         assert doubles != null: "Collection must not be null";
 
         return doubles.stream()
@@ -60,7 +60,7 @@ public final class Doubles {
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Double getMinValue(final Collection<Double> doubles) {
+    public static Double min(final Collection<Double> doubles) {
         assert doubles != null: "Collection must not be null";
 
         return doubles.stream()
@@ -77,7 +77,7 @@ public final class Doubles {
      */
     @Since(version = "1.0.1")
 
-    public static Collection<Double> getSortedCollection(final Collection<Double> collection, final UtilitiesSortMode sortMode) {
+    public static Collection<Double> sorted(final Collection<Double> collection, final SortMode sortMode) {
         assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
 
         final Comparator<Double> comparator = (o1, o2) -> switch (sortMode) {
@@ -95,8 +95,8 @@ public final class Doubles {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Double> getSortedCollection(final Collection<Double> collection) {
-        return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
+    public static Collection<Double> sorted(final Collection<Double> collection) {
+        return sorted(collection, SortMode.ASCENDING);
     }
 
     /**
@@ -141,6 +141,16 @@ public final class Doubles {
         return collection.stream()
                 .mapToDouble(d -> d)
                 .sum();
+    }
+
+    static Double greater(Double a, Double b) {
+        //TODO
+        return null;
+    }
+
+    static Double smaller(Double a, Double b) {
+        //TODO
+        return null;
     }
 
 }

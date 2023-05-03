@@ -3,7 +3,7 @@ package com.github.tecuilacat.utilities.utils;
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 
 import java.util.*;
 
@@ -14,7 +14,7 @@ import java.util.*;
 @UtilityClass(forNativeClass = Integer.class)
 public final class Integers {
 
-    private static final Set<UtilitiesSortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(UtilitiesSortMode.ASCENDING, UtilitiesSortMode.DESCENDING));
+    private static final Set<SortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(SortMode.ASCENDING, SortMode.DESCENDING));
 
     /**
      * Returns the default value of this class that gets returned if something goes sideways
@@ -42,7 +42,7 @@ public final class Integers {
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Integer getMaxValue(final Collection<Integer> integers) {
+    public static Integer max(final Collection<Integer> integers) {
         assert integers != null: "Collection must not be null";
         return integers.stream()
                 .mapToInt(i -> i)
@@ -57,7 +57,7 @@ public final class Integers {
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Integer getMinValue(final Collection<Integer> integers) {
+    public static Integer min(final Collection<Integer> integers) {
         assert integers != null: "Collection must not be null";
         return integers.stream()
                 .mapToInt(i -> i)
@@ -72,7 +72,7 @@ public final class Integers {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Integer> getSortedCollection(final Collection<Integer> collection, final UtilitiesSortMode sortMode) {
+    public static Collection<Integer> sorted(final Collection<Integer> collection, final SortMode sortMode) {
         assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
 
         final Comparator<Integer> comparator = (o1, o2) -> switch (sortMode) {
@@ -90,8 +90,8 @@ public final class Integers {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Integer> getSortedCollection(final Collection<Integer> collection) {
-        return getSortedCollection(collection, UtilitiesSortMode.ASCENDING);
+    public static Collection<Integer> sorted(final Collection<Integer> collection) {
+        return sorted(collection, SortMode.ASCENDING);
     }
 
     /**
@@ -106,6 +106,16 @@ public final class Integers {
         return collection.stream()
                 .mapToInt(i -> i)
                 .sum();
+    }
+
+    static Integer greater(Integer a, Integer b) {
+        //TODO
+        return null;
+    }
+
+    static Integer smaller(Integer a, Integer b) {
+        //TODO
+        return null;
     }
 
 }

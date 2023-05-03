@@ -1,6 +1,6 @@
 package com.github.tecuilacat.utilities.modes;
 
-public enum UtilitiesSortMode {
+public enum SortMode {
     ASCENDING,
     DESCENDING
 }

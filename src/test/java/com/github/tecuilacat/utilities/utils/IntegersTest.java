@@ -1,6 +1,6 @@
 package com.github.tecuilacat.utilities.utils;
 
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -26,19 +26,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class IntegersTest {
 
     @Test
-    void getMaxValue() {
-        assertEquals(5, Integers.getMaxValue(Arrays.asList(1, 3, 4, 2, 5)));
+    void max() {
+        assertEquals(5, Integers.max(Arrays.asList(1, 3, 4, 2, 5)));
     }
 
     @Test
-    void getMinValue() {
-        assertEquals(1, Integers.getMinValue(Arrays.asList(1, 3, 4, 2, 5)));
+    void min() {
+        assertEquals(1, Integers.min(Arrays.asList(1, 3, 4, 2, 5)));
     }
 
     @Test
-    void getSortedCollection() {
-        final List<Integer> sortedDoublesAscending = (List<Integer>) Integers.getSortedCollection(Arrays.asList(1, 3, 4, 2, 5));
-        final List<Integer> sortedDoublesDescending = (List<Integer>) Integers.getSortedCollection(Arrays.asList(1, 3, 4, 2, 5), UtilitiesSortMode.DESCENDING);
+    void sorted() {
+        final List<Integer> sortedDoublesAscending = (List<Integer>) Integers.sorted(Arrays.asList(1, 3, 4, 2, 5));
+        final List<Integer> sortedDoublesDescending = (List<Integer>) Integers.sorted(Arrays.asList(1, 3, 4, 2, 5), SortMode.DESCENDING);
 
         assertAll("Checking Ascending",
                 () -> assertTrue(sortedDoublesAscending.get(0) <= sortedDoublesAscending.get(1)),

@@ -1,6 +1,6 @@
 package com.github.tecuilacat.utilities.utils;
 
-import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
+import com.github.tecuilacat.utilities.modes.SortMode;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -26,19 +26,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class DoublesTest {
 
     @Test
-    void getMaxValue() {
-        assertEquals(5.0, Doubles.getMaxValue(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
+    void max() {
+        assertEquals(5.0, Doubles.max(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
     }
 
     @Test
-    void getMinValue() {
-        assertEquals(1.0, Doubles.getMinValue(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
+    void min() {
+        assertEquals(1.0, Doubles.min(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0)));
     }
 
     @Test
-    void getSortedCollection() {
-        final List<Double> sortedDoublesAscending = (List<Double>) Doubles.getSortedCollection(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0));
-        final List<Double> sortedDoublesDescending = (List<Double>) Doubles.getSortedCollection(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0), UtilitiesSortMode.DESCENDING);
+    void sorted() {
+        final List<Double> sortedDoublesAscending = (List<Double>) Doubles.sorted(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0));
+        final List<Double> sortedDoublesDescending = (List<Double>) Doubles.sorted(Arrays.asList(1.0, 3.0, 4.0, 2.0, 5.0), SortMode.DESCENDING);
 
         assertAll("Checking Ascending",
                 () -> assertTrue(sortedDoublesAscending.get(0) <= sortedDoublesAscending.get(1)),

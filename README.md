@@ -6,6 +6,7 @@
 ![license Badge](https://img.shields.io/badge/License-MIT-gree)
 ![Maven_Central Badge](https://img.shields.io/badge/maven_central-pending-brown)
 ![Type Badge](https://img.shields.io/badge/Software_Typ-utilities-green)
+[![Maven Central](https://img.shields.io/badge/test-google-blue)](https://www.google.com)
 
 This API contains multiple different Utility-Classes with use-cases that might come in handy in other projects such as utilities surrounding native Java classes
 

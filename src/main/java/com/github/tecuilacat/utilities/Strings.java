@@ -1,11 +1,13 @@
-package com.github.tecuilacat.utilities.utils;
+package com.github.tecuilacat.utilities;
 
 import com.github.tecuilacat.utilities.annotations.Since;
+import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
 import com.github.tecuilacat.utilities.annotations.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,17 @@ import java.util.regex.Pattern;
 @Since(version = "1.0.1")
 @UtilityClass(forNativeClass = String.class)
 public final class Strings {
+
+    private static Locale countryConfiguration = Locale.GERMANY;
+
+    public static Locale getCountryConfiguration() {
+        return countryConfiguration;
+    }
+
+    @UtilitiesConfig(affects = Strings.class)
+    public static void configureCountry(Locale countryConfiguration) {
+        Strings.countryConfiguration = countryConfiguration;
+    }
 
     /**
      * Checks if a string contains a certain other string while ignoring upper or lower case
@@ -91,7 +104,6 @@ public final class Strings {
     public static List<String> getMatchingSubstringsIgnoreCase(final String str, final String regex) {
         assert str != null && regex != null: "str and regex must not be null";
 
-
         List<String> result = new ArrayList<>();
         Pattern pattern = Pattern.compile(regex.toLowerCase());
         Matcher matcher = pattern.matcher(str.toLowerCase());
@@ -101,9 +113,19 @@ public final class Strings {
         return result;
     }
 
-    static List<String> getAnyMatchingSubstrings(final String str, final Collection<String> searchList) {
-        //TODO
-        return null;
+    /**
+     * Returns a List of matching substrings of a string that match any strings in the searchList
+     * @param str String that gets checked
+     * @param searchList List of strings to check with
+     * @return List of matching substrings
+     */
+    @Since(version = "1.0.1")
+    public static List<String> getAnyMatchingSubstrings(final String str, final Collection<String> searchList) {
+        List<String> result = new ArrayList<>();
+        for (String searchStr: searchList) {
+            result.addAll(getMatchingSubstringsIgnoreCase(str, searchStr));
+        }
+        return result;
     }
 
     /**
@@ -120,15 +142,28 @@ public final class Strings {
         return pattern.matcher(str);
     }
 
-    static String format(final Double d, final int digitsAfterComma) {
-        //TODO
-        return null;
+    /**
+     * Formats a double to the specified format
+     * @param d Number
+     * @param digitsAfterComma Amount of digits after comma
+     * @return Formatted double as String
+     */
+    @Since(version = "1.0.1")
+    public static String format(final Double d, final int digitsAfterComma) {
+        String format = "%1." + digitsAfterComma + "f";
+        return String.format(countryConfiguration, format, d);
     }
 
-    static String roundAndFormat(Double d, final int digitsAfterComma) {
+    /**
+     * Rounds and formats a double to the specified format
+     * @param d Number
+     * @param digitsAfterComma Amount of digits after comma
+     * @return Formatted double as String
+     */
+    @Since(version = "1.0.1")
+    public static String roundAndFormat(Double d, final int digitsAfterComma) {
         d = Doubles.round(d, digitsAfterComma);
-        //TODO
-        return null;
+        return format(d, digitsAfterComma);
     }
 
 }

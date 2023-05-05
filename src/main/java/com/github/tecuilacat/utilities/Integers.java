@@ -1,4 +1,4 @@
-package com.github.tecuilacat.utilities.utils;
+package com.github.tecuilacat.utilities;
 
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;
@@ -8,11 +8,11 @@ import com.github.tecuilacat.utilities.modes.SortMode;
 import java.util.*;
 
 /**
- * Utilities surrounding the Long class
+ * Utilities surrounding the Integer class
  */
 @Since(version = "1.0.1")
-@UtilityClass(forNativeClass = Long.class)
-public final class Longs {
+@UtilityClass(forNativeClass = Integer.class)
+public final class Integers {
 
     private static final Set<SortMode> SORT_MODES = Collections.unmodifiableSet(EnumSet.of(SortMode.ASCENDING, SortMode.DESCENDING));
 
@@ -21,8 +21,8 @@ public final class Longs {
      * @return Default value on error
      */
     @Since(version = "1.0.1")
-    public static Long getDefaultValueOnError() {
-        return DefaultValues.DEFAULT_LONG_VALUE_ON_ERROR;
+    public static Integer getDefaultValueOnError() {
+        return DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR;
     }
 
     /**
@@ -31,36 +31,36 @@ public final class Longs {
      */
     @Since(version = "1.0.1")
     @UtilitiesConfig(affects = DefaultValues.class, description = "Sets new global return value on error")
-    public static void configureDefaultValueOnError(final Long newDefaultValueOnError) {
-        DefaultValues.DEFAULT_LONG_VALUE_ON_ERROR = newDefaultValueOnError;
+    public static void configureDefaultValueOnError(final Integer newDefaultValueOnError) {
+        DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR = newDefaultValueOnError;
     }
 
     /**
-     * Determines the greatest value of a collection of longs
-     * @param longs Collection of longs e.g.: Arraylist
+     * Determines the greatest value of a collection of integers
+     * @param integers Collection of integers e.g.: Arraylist
      * @return Max value. If collection is empty it returns a default value
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Long max(final Collection<Long> longs) {
-        assert longs != null: "Collection must not be null";
-        return longs.stream()
-                .mapToLong(l -> l)
+    public static Integer max(final Collection<Integer> integers) {
+        assert integers != null: "Collection must not be null";
+        return integers.stream()
+                .mapToInt(i -> i)
                 .max()
-                .orElse(DefaultValues.DEFAULT_LONG_VALUE_ON_ERROR);
+                .orElse(DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR);
     }
 
     /**
-     * Determines the smallest value of a collection of longs
-     * @param longs Collection of longs e.g.: Arraylist
+     * Determines the smallest value of a collection of integers
+     * @param integers Collection of integers e.g.: Arraylist
      * @return Min value. If collection is empty it returns a default value
      * @see DefaultValues
      */
     @Since(version = "1.0.1")
-    public static Long min(final Collection<Long> longs) {
-        assert longs != null: "Collection must not be null";
-        return longs.stream()
-                .mapToLong(l -> l)
+    public static Integer min(final Collection<Integer> integers) {
+        assert integers != null: "Collection must not be null";
+        return integers.stream()
+                .mapToInt(i -> i)
                 .min()
                 .orElse(DefaultValues.DEFAULT_INTEGER_VALUE_ON_ERROR);
     }
@@ -72,11 +72,10 @@ public final class Longs {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Long> sorted(final Collection<Long> collection, final SortMode sortMode) {
-        assert collection != null: "Collection must not be null";
+    public static Collection<Integer> sorted(final Collection<Integer> collection, final SortMode sortMode) {
         assert SORT_MODES.contains(sortMode): "Invalid sort mode is used: " + sortMode;
 
-        final Comparator<Long> comparator = (o1, o2) -> switch (sortMode) {
+        final Comparator<Integer> comparator = (o1, o2) -> switch (sortMode) {
             case DESCENDING -> o2.compareTo(o1);
             case ASCENDING -> o1.compareTo(o2);
         };
@@ -91,7 +90,7 @@ public final class Longs {
      * @return Sorted collection (must be cast back to the original type)
      */
     @Since(version = "1.0.1")
-    public static Collection<Long> sorted(final Collection<Long> collection) {
+    public static Collection<Integer> sorted(final Collection<Integer> collection) {
         return sorted(collection, SortMode.ASCENDING);
     }
 
@@ -101,11 +100,11 @@ public final class Longs {
      * @return Sum of all values
      */
     @Since(version = "1.0.1")
-    public static Long sum(Collection<Long> collection) {
+    public static Integer sum(Collection<Integer> collection) {
         assert collection != null: "Collection must not be null";
 
         return collection.stream()
-                .mapToLong(l -> l)
+                .mapToInt(i -> i)
                 .sum();
     }
 
@@ -116,10 +115,10 @@ public final class Longs {
      * @return max(Number1, Number2)
      */
     @Since(version = "1.0.1")
-    public static Long greater(Long a, Long b) {
+    public static Integer greater(Integer a, Integer b) {
         assert a != null && b != null: "Numbers must not be null";
 
-        long res = a;
+        int res = a;
         if (b > a) {
             res = b;
         }
@@ -133,10 +132,10 @@ public final class Longs {
      * @return min(Number1, Number2)
      */
     @Since(version = "1.0.1")
-    public static Long smaller(Long a, Long b) {
+    public static Integer smaller(Integer a, Integer b) {
         assert a != null && b != null: "Numbers must not be null";
 
-        long res = a;
+        int res = a;
         if (b < a) {
             res = b;
         }
@@ -149,10 +148,10 @@ public final class Longs {
      * @return Number!
      */
     @Since(version = "1.0.1")
-    public static Long faculty(Long number) {
-        assert number < 21: "Cannot calculate faculty of longs larger than 20";
+    public static Integer faculty(Integer number) {
+        assert number < 17: "Cannot calculate faculty of integers larger than 16";
 
-        long res = 1L;
+        int res = 1;
         for (int i = 1; i <= number; i++) {
             res *= i;
         }

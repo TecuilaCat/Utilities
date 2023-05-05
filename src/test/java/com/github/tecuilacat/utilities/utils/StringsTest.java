@@ -1,6 +1,6 @@
 package com.github.tecuilacat.utilities.utils;
 
-import org.junit.jupiter.api.DisplayName;
+import com.github.tecuilacat.utilities.Strings;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@DisplayName("Tests for StringUtilities")
 class StringsTest {
 
     @Test

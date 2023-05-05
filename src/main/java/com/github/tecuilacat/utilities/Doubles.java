@@ -1,4 +1,4 @@
-package com.github.tecuilacat.utilities.utils;
+package com.github.tecuilacat.utilities;
 
 import com.github.tecuilacat.utilities.annotations.Since;
 import com.github.tecuilacat.utilities.annotations.UtilitiesConfig;

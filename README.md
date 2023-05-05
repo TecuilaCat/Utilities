@@ -45,8 +45,8 @@ Add the following dependency to the `pom.xml` file
 ```java
 import com.github.tecuilacat.utilities.modes.SortMode;
 import com.github.tecuilacat.utilities.modes.UtilitiesSortMode;
-import com.github.tecuilacat.utilities.utils.Integers;
-import com.github.tecuilacat.utilities.utils.Strings;
+import com.github.tecuilacat.utilities.Integers;
+import com.github.tecuilacat.utilities.Strings;
 
 import java.util.Arrays;
 

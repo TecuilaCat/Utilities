@@ -1,5 +1,6 @@
 package com.github.tecuilacat.utilities.utils;
 
+import com.github.tecuilacat.utilities.Longs;
 import com.github.tecuilacat.utilities.modes.SortMode;
 import org.junit.jupiter.api.Test;
 

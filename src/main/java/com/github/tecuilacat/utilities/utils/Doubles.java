@@ -143,14 +143,54 @@ public final class Doubles {
                 .sum();
     }
 
-    static Double greater(Double a, Double b) {
-        //TODO
-        return null;
+    /**
+     * Returns the greater number
+     * @param a Number 1
+     * @param b Number 2
+     * @return max(Number1, Number2)
+     */
+    @Since(version = "1.0.1")
+    public static Double greater(Double a, Double b) {
+        assert a != null && b != null: "Numbers must not be null";
+
+        double res = a;
+        if (b > a) {
+            res = b;
+        }
+        return res;
     }
 
-    static Double smaller(Double a, Double b) {
-        //TODO
-        return null;
+    /**
+     * Returns the smaller number
+     * @param a Number 1
+     * @param b Number 2
+     * @return min(Number1, Number2)
+     */
+    @Since(version = "1.0.1")
+    public static Double smaller(Double a, Double b) {
+        assert a != null && b != null: "Numbers must not be null";
+
+        double res = a;
+        if (b < a) {
+            res = b;
+        }
+        return res;
+    }
+
+    /**
+     * Calculates the faculty of a number
+     * @param number Number
+     * @return Number!
+     */
+    @Since(version = "1.0.1")
+    public static Double faculty(Double number) {
+        assert number < 171: "Cannot calculate faculty of doubles larger than 170";
+
+        double res = 1;
+        for (int i = 1; i <= number; i++) {
+            res *= i;
+        }
+        return res;
     }
 
 }

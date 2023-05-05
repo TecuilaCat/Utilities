@@ -60,4 +60,28 @@ class LongsTest {
         assertEquals(125L, Longs.sum(Arrays.asList(7L, 9L, 6L, 7L, 4L, 1L, 8L, 83L)));
     }
 
+    @Test
+    void greater() {
+        assertAll("Doubles: greater(a,b)",
+                () -> assertEquals(5L, Longs.greater(5L, 2L)),
+                () -> assertEquals(5L, Longs.greater(2L, 5L))
+        );
+    }
+
+    @Test
+    void smaller() {
+        assertAll("Doubles: smaller(a,b)",
+                () -> assertEquals(2L, Longs.smaller(5L, 2L)),
+                () -> assertEquals(2L, Longs.smaller(2L, 5L))
+        );
+    }
+
+    @Test
+    void faculty() {
+        assertAll("Doubles: faculty(number)",
+                () -> assertEquals(1L, Longs.faculty(0L)),
+                () -> assertEquals(3628800L, Longs.faculty(10L))
+        );
+    }
+
 }

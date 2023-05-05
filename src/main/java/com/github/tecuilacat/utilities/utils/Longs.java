@@ -109,14 +109,54 @@ public final class Longs {
                 .sum();
     }
 
-    static Long greater(Long a, Long b) {
-        //TODO
-        return null;
+    /**
+     * Returns the greater number
+     * @param a Number 1
+     * @param b Number 2
+     * @return max(Number1, Number2)
+     */
+    @Since(version = "1.0.1")
+    public static Long greater(Long a, Long b) {
+        assert a != null && b != null: "Numbers must not be null";
+
+        long res = a;
+        if (b > a) {
+            res = b;
+        }
+        return res;
     }
 
-    static Long smaller(Long a, Long b) {
-        //TODO
-        return null;
+    /**
+     * Returns the smaller number
+     * @param a Number 1
+     * @param b Number 2
+     * @return min(Number1, Number2)
+     */
+    @Since(version = "1.0.1")
+    public static Long smaller(Long a, Long b) {
+        assert a != null && b != null: "Numbers must not be null";
+
+        long res = a;
+        if (b < a) {
+            res = b;
+        }
+        return res;
+    }
+
+    /**
+     * Calculates the faculty of a number
+     * @param number Number
+     * @return Number!
+     */
+    @Since(version = "1.0.1")
+    public static Long faculty(Long number) {
+        assert number < 21: "Cannot calculate faculty of longs larger than 20";
+
+        long res = 1L;
+        for (int i = 1; i <= number; i++) {
+            res *= i;
+        }
+        return res;
     }
 
 }

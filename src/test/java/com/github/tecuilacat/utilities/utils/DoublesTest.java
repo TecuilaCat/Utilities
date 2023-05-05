@@ -71,4 +71,28 @@ class DoublesTest {
     void sum() {
         assertEquals(125.0, Doubles.sum(Arrays.asList(7.0, 9.0, 6.0, 7.0, 4.0, 1.0, 8.0, 83.0)));
     }
+
+    @Test
+    void greater() {
+        assertAll("Doubles: greater(a,b)",
+                () -> assertEquals(5.0, Doubles.greater(5.0, 2.0)),
+                () -> assertEquals(5.0, Doubles.greater(2.0, 5.0))
+        );
+    }
+
+    @Test
+    void smaller() {
+        assertAll("Doubles: smaller(a,b)",
+                () -> assertEquals(2.0, Doubles.smaller(5.0, 2.0)),
+                () -> assertEquals(2.0, Doubles.smaller(2.0, 5.0))
+        );
+    }
+
+    @Test
+    void faculty() {
+        assertAll("Doubles: faculty(number)",
+                () -> assertEquals(1.0, Doubles.faculty(0.0)),
+                () -> assertEquals(3628800.0, Doubles.faculty(10.0))
+        );
+    }
 }

@@ -59,4 +59,28 @@ class IntegersTest {
     void sum() {
         assertEquals(125, Integers.sum(Arrays.asList(7, 9, 6, 7, 4, 1, 8, 83)));
     }
+
+    @Test
+    void greater() {
+        assertAll("Doubles: greater(a,b)",
+                () -> assertEquals(5, Integers.greater(5, 2)),
+                () -> assertEquals(5, Integers.greater(2, 5))
+        );
+    }
+
+    @Test
+    void smaller() {
+        assertAll("Doubles: smaller(a,b)",
+                () -> assertEquals(2, Integers.smaller(5, 2)),
+                () -> assertEquals(2, Integers.smaller(2, 5))
+        );
+    }
+
+    @Test
+    void faculty() {
+        assertAll("Doubles: faculty(number)",
+                () -> assertEquals(1, Integers.faculty(0)),
+                () -> assertEquals(3628800, Integers.faculty(10))
+        );
+    }
 }

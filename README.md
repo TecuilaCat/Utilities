@@ -24,7 +24,7 @@ Add the following dependency to the `pom.xml` file
 ```xml
 <dependency>
     <groupId>com.github.tecuilacat</groupId>
-    <artifactId>Utilities</artifactId>
+    <artifactId>utilities</artifactId>
     <version>1.0.1</version>
 </dependency>
 ```

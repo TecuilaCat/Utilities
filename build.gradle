@@ -1,20 +1,11 @@
 plugins {
     id 'java'
-    id 'maven-publish'
 }
 
 group = 'com.github.tecuilacat.utilities'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
 }
 
 repositories {

@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'org.github.tecuilacat.spotifytracker'
+group = 'com.github.tecuilacat.utilities'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
